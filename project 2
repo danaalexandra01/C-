@@ -1,0 +1,18 @@
+int main() {
+    unsigned long long A, B, K;
+    cin>>A>>B>>K;
+    auto v=0;
+    while(K!=0)
+    {
+        if(((A>>(K-1))&1ull)==0 && ((B>>(15-v))&1ull)==1)
+        {B=(B&~(1ull<<(15-v)));
+        A=(A|(1ull<<(K-1)));}
+        else
+          if(((A>>(K-1))&1)==1 && ((B>>(15-v))&1ull)==0)
+          {A=(A&~(1ull<<(K-1)));
+          B=(B|(1ull<<(15-v)));}
+          K--;
+          v++;
+    }
+    cout<<A<<" "<<B;
+}
